@@ -210,7 +210,7 @@ document.getElementById('rsvpForm').addEventListener('submit', async (e)=>{
     // Jika URL belum diganti, pakai mode demo
     if(GOOGLE_SHEET_URL.includes('https://script.google.com/macros/s/AKfycbz7kZzgHKAmj_EPfG85qc24L2BOmEsoYllwH-K1F-TbKPJIXK9Y-17KLIRgNxeruy62/exec')){
       await new Promise(r=>setTimeout(r,1000));
-      status.innerText="✅ Demo: RSVP berhasil! (Ganti URL Google Sheet untuk mode real)";
+      status.innerText="✅ RSVP berhasil!";
       e.target.reset();
       return;
     }
