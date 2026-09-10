@@ -70,13 +70,13 @@ input, select, textarea{width:100%;padding:12px 16px;border:1px solid #e5ddd0;bo
   <div class="grid-2" style="margin-top:24px">
     <div class="card" style="text-align:center">
       <!-- GANTI FOTO: ganti src di bawah dengan link foto kamu -->
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Al-Farizi">
+      <img src="GANTI FOTO" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Al-Farizi">
       <h3>Nur Al-Farizi</h3>
       <p style="font-size:13px;opacity:0.7">Putra dari<br>Bpk. ... & Ibu ...</p>
       <p style="margin-top:8px;font-size:12px">@alfarizi.07</p>
     </div>
     <div class="card" style="text-align:center">
-      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Melinda">
+      <img src="GANTI FOTO" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Melinda">
       <h3>Melinda</h3>
       <p style="font-size:13px;opacity:0.7">Putri dari<br>Bpk. ... & Ibu ...</p>
     </div>
@@ -153,7 +153,7 @@ input, select, textarea{width:100%;padding:12px 16px;border:1px solid #e5ddd0;bo
   <p style="font-size:13px;opacity:0.6;margin-bottom:16px">Doa restu Anda sangat berarti, jika ingin berbagi tanda kasih</p>
   <div class="grid-2" style="text-align:left">
     <div class="card"><b>💳 BCA</b><br><span id="rek1">1234567890</span><br><small>a.n Nur Al-Farizi</small><br><button class="btn" style="background:#eee;margin-top:8px" onclick="copyRek('rek1')">Salin No. Rek</button></div>
-    <div class="card"><b>📱 DANA</b><br><span id="rek2">081234567890</span><br><small>a.n Melinda</small><br><button class="btn" style="background:#eee;margin-top:8px" onclick="copyRek('rek2')">Salin No. HP</button></div>
+    <div class="card"><b>📱 BCA</b><br><span id="rek2">081234567890</span><br><small>a.n Melinda</small><br><button class="btn" style="background:#eee;margin-top:8px" onclick="copyRek('rek2')">Salin No. HP</button></div>
   </div>
 </div>
 
@@ -163,7 +163,7 @@ input, select, textarea{width:100%;padding:12px 16px;border:1px solid #e5ddd0;bo
 
 <script>
 // ===== GANTI TANGGAL ACARA DISINI =====
-const eventDate = new Date("2026-12-20T08:00:00+07:00").getTime();
+const eventDate = new Date("2026-10-03T08:00:00+07:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
   const diff = eventDate - now;
@@ -197,7 +197,7 @@ function copyRek(id){
 // 1. Buat Google Sheet baru, buat sheet dengan header: Timestamp | Nama | Kehadiran | Jumlah | Pesan
 // 2. Extensions > Apps Script > Paste kode dari file google-apps-script.js
 // 3. Deploy > Web App > Anyone > Copy URL > Paste di bawah ini
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/PASTE_URL_KAMU_DISINI/exec";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbz7kZzgHKAmj_EPfG85qc24L2BOmEsoYllwH-K1F-TbKPJIXK9Y-17KLIRgNxeruy62/exec/exec";
 
 document.getElementById('rsvpForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
