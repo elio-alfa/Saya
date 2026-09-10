@@ -1,103 +1,230 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Wedding of Al-Farizi & Melinda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Inter:wght@300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { --cream:#FFF5E5; --orange:#FF6B35; --navy:#1a2a4a; }
-    body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy)}
-   .font-serif{font-family:'Cormorant Garamond',serif}
-   .font-script{font-family:'Great Vibes',cursive}
-   .font-arabic{font-family:'Amiri',serif}
-    [data-animate]{opacity:0;transform:translateY(24px);transition:all.9s cubic-bezier(.16,1,.3,1)}
-    [data-animate].is-visible{opacity:1;transform:translateY(0)}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding Of Al-Farizi & Melinda</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== GANTI WARNA DISINI ===== */
+:root {
+  --cream: #FFF5E5;
+  --orange: #FF6B35;
+  --navy: #1a2a4a;
+  --dark: #2B2D42;
+  --white: #ffffff;
+  --tosca: #00BFA6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+.font-script{font-family:'Great Vibes',cursive}
+.hero{height:100vh;background:linear-gradient(180deg, rgba(255,245,229,0.9), rgba(255,245,229,0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.card{background:var(--white);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.08);padding:24px}
+.btn{padding:12px 28px;border-radius:30px;border:none;cursor:pointer;font-weight:600;transition:0.3s}
+.btn-primary{background:var(--orange);color:white}
+.btn-primary:hover{transform:scale(1.05)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+.section{padding:60px 20px;max-width:900px;margin:0 auto}
+.badge{padding:6px 16px;border-radius:20px;background:var(--orange);color:white;font-size:12px}
+.countdown{display:flex;gap:12px;justify-content:center;margin:20px 0}
+.count-box{background:var(--white);border-radius:16px;padding:16px 12px;min-width:70px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.count-box b{font-size:24px;display:block;color:var(--navy)}
+.count-box span{font-size:11px;letter-spacing:1px}
+input, select, textarea{width:100%;padding:12px 16px;border:1px solid #e5ddd0;border-radius:12px;margin-top:8px;font-family:'Poppins'}
+.timeline{border-left:2px solid var(--orange);padding-left:24px;margin-left:12px}
+.timeline-item{position:relative;margin-bottom:32px}
+.timeline-item::before{content:'';position:absolute;left:-32px;top:4px;width:14px;height:14px;background:var(--orange);border-radius:50%;border:3px solid var(--cream)}
+</style>
 </head>
 <body>
-  <!-- MUSIC -->
-  <button id="musicBtn" class="fixed top-5 right-5 z-50 w-11 h-11 rounded-full bg-white/70 border flex items-center justify-center opacity-0 pointer-events-none">🎵</button>
 
-  <!-- HERO - GANTI NAMA & TANGGAL DISINI -->
-  <section class="relative min-h-screen flex flex-col items-center justify-center px-6">
-    <h1 class="font-serif text- text-center leading-[0.9]">Al-Farizi<br><span class="font-script text-[#FF6B35]">&</span><br>Melinda</h1>
-    <p class="mt-6 text- tracking-widest uppercase opacity-70">Sabtu, 20 Desember 2026 - Gempol Pasuruan</p>
-    <button id="openBtn" class="mt-10 bg-[#1a2a4a] text-white px-8 py-3 rounded-full">Buka Undangan</button>
-    <p class="mt-4 text- opacity-40">Untuk: <span id="guestName">Tamu Undangan</span></p>
-  </section>
+<!-- MUSIC -->
+<audio id="music" loop><source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a650f6.mp3?filename=romantic-wedding-11156.mp3" type="audio/mpeg"></audio>
+<button onclick="toggleMusic()" style="position:fixed;top:16px;right:16px;z-index:99;background:white;border-radius:50%;width:44px;height:44px;border:none;box-shadow:0 4px 12px rgba(0,0,0,0.1);cursor:pointer">🎵</button>
 
-  <!-- CONTENT - muncul setelah klik buka -->
-  <div id="content" class="opacity-0 h-0 overflow-hidden">
-
-    <!-- AYAT -->
-    <section class="px-6 py-20 text-center max-w- mx-auto">
-      <p class="font-arabic text-">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا</p>
-      <p class="mt-4 italic text- opacity-70">QS Ar-Rum:21 - Dan di antara tanda-tanda kekuasaan-Nya...</p>
-    </section>
-
-    <!-- COUNTDOWN - GANTI TANGGAL DI JS BAWAH -->
-    <section class="bg-[#1a2a4a] text-white py-16 px-6 text-center">
-      <div id="countdown" class="grid grid-cols-4 gap-3 max-w- mx-auto">
-        <div class="bg-white/10 rounded-2xl p-4"><div id="days" class="text- font-serif">00</div><div class="text- uppercase">Hari</div></div>
-        <div class="bg-white/10 rounded-2xl p-4"><div id="hours" class="text- font-serif">00</div><div class="text- uppercase">Jam</div></div>
-        <div class="bg-white/10 rounded-2xl p-4"><div id="mins" class="text- font-serif">00</div><div class="text- uppercase">Menit</div></div>
-        <div class="bg-white/10 rounded-2xl p-4"><div id="secs" class="text- font-serif">00</div><div class="text- uppercase">Detik</div></div>
-      </div>
-    </section>
-
-    <!-- RSVP GOOGLE SHEET -->
-    <section class="px-6 py-20 max-w- mx-auto">
-      <form id="rsvpForm" class="bg-white rounded- p-8 border shadow-xl space-y-4">
-        <h3 class="font-serif text- text-center">RSVP</h3>
-        <input name="nama" required placeholder="Nama" class="w-full rounded-full border px-5 py-3">
-        <select name="kehadiran" class="w-full rounded-full border px-5 py-3"><option>Hadir</option><option>Tidak Hadir</option></select>
-        <textarea name="pesan" placeholder="Ucapan" class="w-full rounded- border px-5 py-3"></textarea>
-        <button class="w-full bg-[#1a2a4a] text-white rounded-full py-3">Kirim RSVP</button>
-        <p id="status" class="text-center text-"></p>
-      </form>
-    </section>
-
-    <!-- AMPLOP -->
-    <section class="px-6 pb-20 text-center max-w- mx-auto">
-      <h2 class="font-serif text-">Amplop Digital</h2>
-      <div class="mt-6 grid grid-cols-2 gap-4 text-left">
-        <div class="bg-white border rounded-2xl p-6"><b>BCA</b><p id="rek1">1234567890</p><button onclick="navigator.clipboard.writeText('1234567890')">Salin</button></div>
-        <div class="bg-[#1a2a4a] text-white rounded-2xl p-6"><b>DANA</b><p id="rek2">081234567890</p><button onclick="navigator.clipboard.writeText('081234567890')">Salin</button></div>
-      </div>
-    </section>
+<!-- HERO - GANTI NAMA & TANGGAL DISINI -->
+<div class="hero" id="hero">
+  <div>
+    <p style="letter-spacing:4px;font-size:12px;opacity:0.7">THE WEDDING OF</p>
+    <h1 class="font-script" style="font-size:64px;color:var(--navy);line-height:1">Al-Farizi</h1>
+    <h1 class="font-script" style="font-size:64px;color:var(--orange);line-height:0.9">& Melinda</h1>
+    <p style="margin-top:20px;letter-spacing:2px">Sabtu, 03 Oktober 2026</p>
+    <p style="opacity:0.6;font-size:13px">Gempol, Pasuruan</p>
+    <button class="btn btn-primary" style="margin-top:28px" onclick="document.getElementById('ayat').scrollIntoView({behavior:'smooth'})">Buka Undangan 💌</button>
+    <p style="margin-top:12px;font-size:11px;opacity:0.5">*Kepada Bpk/Ibu/Saudara/i : <span id="guestName">Tamu Undangan</span></p>
   </div>
+</div>
+
+<!-- AYAT -->
+<div class="section" id="ayat" style="text-align:center">
+  <div class="card">
+    <p style="font-size:13px;letter-spacing:3px;opacity:0.5">QS. AR-RUM : 21</p>
+    <p style="margin:16px 0;font-style:italic;line-height:1.8">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...”</p>
+  </div>
+</div>
+
+<!-- COUPLE - GANTI FOTO & NAMA ORANG TUA DISINI -->
+<div class="section">
+  <h2 class="font-script" style="font-size:42px;text-align:center">Mempelai</h2>
+  <div class="grid-2" style="margin-top:24px">
+    <div class="card" style="text-align:center">
+      <!-- GANTI FOTO: ganti src di bawah dengan link foto kamu -->
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Al-Farizi">
+      <h3>Nur Al-Farizi</h3>
+      <p style="font-size:13px;opacity:0.7">Putra dari<br>Bpk. ... & Ibu ...</p>
+      <p style="margin-top:8px;font-size:12px">@alfarizi.07</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block" alt="Melinda">
+      <h3>Melinda</h3>
+      <p style="font-size:13px;opacity:0.7">Putri dari<br>Bpk. ... & Ibu ...</p>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTDOWN - GANTI TANGGAL DISINI -->
+<div class="section" style="text-align:center">
+  <span class="badge">SAVE THE DATE</span>
+  <h2 class="font-script" style="font-size:42px;margin-top:12px">03 . 10 . 2026</h2>
+  <div class="countdown" id="countdown">
+    <div class="count-box"><b id="d">00</b><span>HARI</span></div>
+    <div class="count-box"><b id="h">00</b><span>JAM</span></div>
+    <div class="count-box"><b id="m">00</b><span>MENIT</span></div>
+    <div class="count-box"><b id="s">00</b><span>DETIK</span></div>
+  </div>
+  <div class="grid-2" style="text-align:left;margin-top:20px">
+    <div class="card"><b>Akad Nikah</b><br>08:00 WIB<br><small>Ketimang, Sidoarjo</small></div>
+    <div class="card"><b>Resepsi</b><br>11:00 WIB - Selesai<br><small>Ketimang, Sidoarjo</small></div>
+  </div>
+  <a href="https://maps.google.com/?q=Gempol+Pasuruan" target="_blank" class="btn btn-primary" style="display:inline-block;margin-top:16px;text-decoration:none">📍 Buka Google Maps</a>
+</div>
+
+<!-- STORY -->
+<div class="section">
+  <h2 class="font-script" style="font-size:42px;text-align:center">Love Story</h2>
+  <div class="timeline" style="margin-top:24px">
+    <div class="timeline-item"><b>Pertama Bertemu</b><p style="font-size:13px;opacity:0.7;margin-top:4px">Awal cerita di BLK, dari teman jadi partner hidup.</p></div>
+    <div class="timeline-item"><b>Lamaran</b><p style="font-size:13px;opacity:0.7;margin-top:4px">Melamar dengan niat tulus untuk ibadah.</p></div>
+    <div class="timeline-item"><b>Menuju Halal</b><p style="font-size:13px;opacity:0.7;margin-top:4px">InsyaAllah 03 Oktober 2026 kami mengikat janji suci.</p></div>
+  </div>
+</div>
+
+<!-- GALLERY - GANTI FOTO DISINI -->
+<div class="section">
+  <h2 class="font-script" style="font-size:42px;text-align:center">Galeri</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1520854221256-17451ccdf07b?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400" style="border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover">
+  </div>
+</div>
+
+<!-- RSVP - KONEKSI KE GOOGLE SHEET -->
+<div class="section">
+  <div class="card">
+    <h2 class="font-script" style="font-size:36px;text-align:center">RSVP</h2>
+    <p style="text-align:center;font-size:13px;opacity:0.6;margin-bottom:16px">Konfirmasi kehadiran via Google Sheet otomatis</p>
+    <form id="rsvpForm">
+      <label>Nama Lengkap</label>
+      <input type="text" name="nama" required placeholder="Tulis nama kamu">
+      <label style="margin-top:12px;display:block">Kehadiran</label>
+      <select name="kehadiran" required>
+        <option value="">Pilih</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+      <label style="margin-top:12px;display:block">Jumlah Tamu</label>
+      <input type="number" name="jumlah" min="1" max="5" value="1">
+      <label style="margin-top:12px;display:block">Pesan / Doa</label>
+      <textarea name="pesan" rows="3" placeholder="Selamat ya..."></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:16px">Kirim RSVP</button>
+      <p id="status" style="text-align:center;margin-top:12px;font-size:13px"></p>
+    </form>
+  </div>
+</div>
+
+<!-- AMPLOP DIGITAL -->
+<div class="section" style="text-align:center">
+  <h2 class="font-script" style="font-size:36px">Amplop Digital</h2>
+  <p style="font-size:13px;opacity:0.6;margin-bottom:16px">Doa restu Anda sangat berarti, jika ingin berbagi tanda kasih</p>
+  <div class="grid-2" style="text-align:left">
+    <div class="card"><b>💳 BCA</b><br><span id="rek1">1234567890</span><br><small>a.n Nur Al-Farizi</small><br><button class="btn" style="background:#eee;margin-top:8px" onclick="copyRek('rek1')">Salin No. Rek</button></div>
+    <div class="card"><b>📱 DANA</b><br><span id="rek2">081234567890</span><br><small>a.n Melinda</small><br><button class="btn" style="background:#eee;margin-top:8px" onclick="copyRek('rek2')">Salin No. HP</button></div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:40px 20px;opacity:0.5;font-size:12px">
+  <p>Terima Kasih<br>Al-Farizi & Melinda<br><br>Template by TemplateKreatif - Canva FREE Editable</p>
+</div>
 
 <script>
-// ===== EDIT DISINI =====
-const EVENT_DATE = new Date("2026-12-20T08:00:00+07:00").getTime();
+// ===== GANTI TANGGAL ACARA DISINI =====
+const eventDate = new Date("2026-12-20T08:00:00+07:00").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+  if(diff<0) return;
+  document.getElementById('d').innerText = Math.floor(diff/(1000*60*60*24));
+  document.getElementById('h').innerText = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  document.getElementById('m').innerText = Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById('s').innerText = Math.floor((diff%(1000*60))/1000);
+},1000);
+
+// GUEST NAME FROM URL ?to=NamaTamu
+const urlParams = new URLSearchParams(window.location.search);
+const to = urlParams.get('to');
+if(to){ document.getElementById('guestName').innerText = decodeURIComponent(to); }
+
+// MUSIC
+let playing=false;
+function toggleMusic(){
+  const audio=document.getElementById('music');
+  if(!playing){audio.play(); playing=true;} else {audio.pause(); playing=false;}
+}
+
+// COPY REK
+function copyRek(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert('Disalin: '+text);
+}
+
+// ===== KONEKSI GOOGLE SHEET - GANTI URL DISINI =====
+// 1. Buat Google Sheet baru, buat sheet dengan header: Timestamp | Nama | Kehadiran | Jumlah | Pesan
+// 2. Extensions > Apps Script > Paste kode dari file google-apps-script.js
+// 3. Deploy > Web App > Anyone > Copy URL > Paste di bawah ini
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/PASTE_URL_KAMU_DISINI/exec";
 
-document.getElementById('openBtn').onclick = () => {
-  document.getElementById('content').classList.remove('opacity-0','h-0');
-  document.getElementById('guestName').innerText = new URLSearchParams(location.search).get('to') || 'Tamu Undangan';
-  setInterval(()=>{
-    let d = EVENT_DATE - Date.now();
-    document.getElementById('days').innerText = String(Math.floor(d/86400000)).padStart(2,'0');
-    document.getElementById('hours').innerText = String(Math.floor(d/3600000%24)).padStart(2,'0');
-    document.getElementById('mins').innerText = String(Math.floor(d/60000%60)).padStart(2,'0');
-    document.getElementById('secs').innerText = String(Math.floor(d/1000%60)).padStart(2,'0');
-  },1000);
-};
-
-document.getElementById('rsvpForm').onsubmit = async (e)=>{
+document.getElementById('rsvpForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
-  let data = Object.fromEntries(new FormData(e.target).entries());
+  const status=document.getElementById('status');
+  status.innerText="Mengirim...";
+  const data = Object.fromEntries(new FormData(e.target).entries());
   data.timestamp = new Date().toLocaleString('id-ID');
-  if(GOOGLE_SHEET_URL.includes('PASTE_URL')){
-    document.getElementById('status').innerText = '✅ Demo berhasil (ganti URL Sheet)';
-    return;
+  
+  try{
+    // Jika URL belum diganti, pakai mode demo
+    if(GOOGLE_SHEET_URL.includes('https://script.google.com/macros/s/AKfycbz7kZzgHKAmj_EPfG85qc24L2BOmEsoYllwH-K1F-TbKPJIXK9Y-17KLIRgNxeruy62/exec')){
+      await new Promise(r=>setTimeout(r,1000));
+      status.innerText="✅ Demo: RSVP berhasil! (Ganti URL Google Sheet untuk mode real)";
+      e.target.reset();
+      return;
+    }
+    await fetch(GOOGLE_SHEET_URL, {
+      method:'POST',
+      mode:'no-cors',
+      body: JSON.stringify(data)
+    });
+    status.innerText="✅ Terima kasih! RSVP kamu sudah masuk ke Google Sheet";
+    e.target.reset();
+  }catch(err){
+    status.innerText="❌ Gagal, coba lagi. Error: "+err.message;
   }
-  await fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(data)});
-  document.getElementById('status').innerText = '✅ RSVP masuk ke Google Sheet';
-  e.target.reset();
-};
+});
 </script>
 </body>
 </html>
